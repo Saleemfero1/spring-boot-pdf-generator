@@ -17,7 +17,7 @@ public class ClientController {
 
     @GetMapping
     public ResponseEntity<List<ClientDefinition>> getAllClientDefinition(){
-        return new ResponseEntity<>(clientService.getAllClientDefinition(), HttpStatus.OK);
+        return new ResponseEntity<>(clientService.getAllClientDefinitions(), HttpStatus.OK);
     }
     @GetMapping("/{clientId}")
     public ResponseEntity<ClientDefinition> getClientDefinitionById(@PathVariable("clientId") Long clientId){

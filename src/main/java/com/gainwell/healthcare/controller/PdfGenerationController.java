@@ -23,8 +23,8 @@ public class PdfGenerationController {
 
     @GetMapping
     public String generatePdf() {
-        // Call your existing API to get data (replace this with your actual API call)
-        List<ClientDefinition> clientDefinition = clientService.getAllClientDefinition();
+        // Fetch Data from ClientDefinition
+        List<ClientDefinition> clientDefinition = clientService.getAllClientDefinitions();
 
         // Call the PDF generation service
         try {

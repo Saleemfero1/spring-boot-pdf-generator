@@ -14,28 +14,25 @@ import java.util.List;
 @Service
 public class PdfGenerationService {
 
-    public void generatePdf(List<ClientDefinition> apiData, String outputPath) throws IOException {
+    public void generatePdf(List<ClientDefinition> clientDefinitions, String outputPath) throws IOException {
         try (PDDocument document = new PDDocument()) {
             PDPage page = new PDPage();
             document.addPage(page);
 
             try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
-                contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 14);
+                contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD_OBLIQUE), 12);
                 contentStream.beginText();
                 contentStream.newLineAtOffset(20, 700);
                 // Add constant content
                 contentStream.showText("--------------Client Definitions----------------");
                 contentStream.newLineAtOffset(0, -20); // Adjust the Y-coordinate to move to the next line
-                contentStream.showText("ClientID            ClientLabel");
+                contentStream.showText("ClientID      |      ClientLabel");
                 contentStream.newLineAtOffset(0, -20); // Adjust the Y-coordinate to move to the next line
-                contentStream.showText("--------------------------------------------------");
-                for (ClientDefinition clientDefinition : apiData) {
+                contentStream.showText("-----------------------------------------------------");
+                for (ClientDefinition clientDefinition : clientDefinitions) {
                     contentStream.newLineAtOffset(0, -20);
-                    contentStream.showText(clientDefinition.getClientKey() + "                " + clientDefinition.getClientLabel());
+                    contentStream.showText(clientDefinition.getClientKey() + "             |         " + clientDefinition.getClientLabel());
                 }
-                contentStream.newLineAtOffset(0, -20);
-                contentStream.showText("Thank You!");
-
                 contentStream.endText();
             }
 

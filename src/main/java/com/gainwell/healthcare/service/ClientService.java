@@ -17,7 +17,7 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-    public List<ClientDefinition> getAllClientDefinition() {
+    public List<ClientDefinition> getAllClientDefinitions() {
         List<ClientDefinition> clientDefinitions = new ArrayList<>();
         clientDefinitions = clientRepository.findAll();
 
