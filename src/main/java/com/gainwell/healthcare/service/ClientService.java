@@ -24,6 +24,12 @@ public class ClientService {
         return clientDefinitions;
     }
 
+    public List<Object[]> getAllClientData() {
+        List<Object[]> clientDefinitions = new ArrayList<>();
+        clientDefinitions = clientRepository.getAllClientData();
+
+        return clientDefinitions;
+    }
     public String saveClientDefinition(ClientDefinition clientDefinition) {
         ClientDefinition savedClientDefinition = clientRepository.save(clientDefinition);
         if (savedClientDefinition == null) {

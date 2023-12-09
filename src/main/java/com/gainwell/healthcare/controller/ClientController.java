@@ -19,6 +19,10 @@ public class ClientController {
     public ResponseEntity<List<ClientDefinition>> getAllClientDefinition(){
         return new ResponseEntity<>(clientService.getAllClientDefinitions(), HttpStatus.OK);
     }
+    @GetMapping("/data")
+    public ResponseEntity<List<Object[]>> getAllClientData(){
+        return new ResponseEntity<>(clientService.getAllClientData(), HttpStatus.OK);
+    }
     @GetMapping("/{clientId}")
     public ResponseEntity<ClientDefinition> getClientDefinitionById(@PathVariable("clientId") Long clientId){
         return new ResponseEntity<>(clientService.getClientDefinitionById(clientId), HttpStatus.OK);
